@@ -106,46 +106,54 @@ int main()
 		case 2:
 			if((year%4==0 && year%100!=0)||year%400==0)
 			{
-			for(i=1;i<30;i++)
-			{
-				if(i==1){
-					for(j=0;j<median+1;j++)
-					{
-						printf("\t");
-					}
-					printf("%d",i);
-					median++;
-				}else
+				for(i=1;i<30;i++)
 				{
-					printf("\t%d",i);
-					median++;
+					if(i==1)
+					{
+						for(j=0;j<median+1;j++)
+						{
+						printf("\t");
+						}
+						printf("%d",i);
+						median++;
+					}
+					else
+					{
+						printf("\t%d",i);
+						median++;
+					}
+					if(median%7==0)
+					{
+						printf("\n");
+					}
 				}
-				if(median%7==0)
-					printf("\n");
-			}
 			}
 			else
 			{
-			for(i=1;i<29;i++)
-			{
-				if(i==1){
-					for(j=0;j<median+1;j++)
-					{
-						printf("\t");
-					}
-					printf("%d",i);
-					median++;
-				}else
+				for(i=1;i<29;i++)
 				{
-					printf("\t%d",i);
-					median++;
+					if(i==1)
+					{
+						for(j=0;j<median+1;j++)
+						{
+							printf("\t");
+						}
+						printf("%d",i);
+						median++;
+					}
+					else
+					{
+						printf("\t%d",i);
+						median++;
+					}
+					if(median%7==0)
+					{
+						printf("\n");
+					}
 				}
-				if(median%7==0)
-					printf("\n");
-			}
 			}
 			break;
-		}
+	}
 	printf("\n");
 	return 0;
 }
