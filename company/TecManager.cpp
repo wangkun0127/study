@@ -112,7 +112,13 @@ void TecManager::displayTecPartTimeinfo(){
 	iter = refMap.begin();
 	for(;iter != refMap.end();iter++)
 	{
-		iter->second->info();
+		if(10000==getId())
+		{
+			iter->second->info();
+		}
+		else if(iter->second->getLearder()==getId()){
+			iter->second->info();
+		}
 	}
 }
 

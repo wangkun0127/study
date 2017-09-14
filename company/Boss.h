@@ -46,6 +46,7 @@ public:
 	//对兼职销售人员的增删改查
 	void operatorToSalePartTime();
 
+	void TotalInfo();
 	void work();
 };
 

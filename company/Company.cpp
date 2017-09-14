@@ -6,6 +6,9 @@
  */
 
 #include "Company.h"
+#include <time.h>
+#include <string.h>
+#include <stdio.h>
 
 Company::Company() {
 	// TODO Auto-generated constructor stub
@@ -73,7 +76,7 @@ void Company::setBaseId(){
 			Employee::m_suiId = iter5->second->getId();
 		}
 	}
-	Employee::m_suiId++;
+	//Employee::m_suiId++;
 }
 short Company::loginFace(){
 	system("clear");
@@ -89,6 +92,7 @@ short Company::loginFace(){
 	cout << "请输入选项：";
 	short ch = -1;
 	cin >> ch;
+	while(getchar()!='\n');
 	return ch;
 }
 void Company::work(){
@@ -96,15 +100,48 @@ void Company::work(){
 	uint uiId = 0;
 	string strPwd = "";
 	//Employee::setBaseId();
+	short count = 0;
 	while (1)
 	{
+		count++;
+		if(4 == count)
+		{
+			system("clear");
+			cout << "您的用户名或密码或验证码输错三次，系统将自动退出！\n";
+			sleep(3);
+			break;
+		}
 		ch = loginFace();
 		if (0 != ch)
 		{
+			char a[37]="0123456789qwertyuioplkjhgfdsazxcvbnm";
+			int i,j;char output[5];
+			srand((int)time(0));
+			for(i=0;i<4;i++)
+			{
+				j=rand()%36;
+				output[i]=a[j];
+			}
+			char num1[20];
+			char *p=num1;
 			cout << "请输入员工编号:";
 			cin >> uiId;
-			cout << "请输入密码:";
-			cin >> strPwd;
+			p=getpass("请输入密码：");
+			strPwd=p;
+			char out[5];
+			cout << "------\n";
+			cout <<"|"<<output<<"|\n";
+			cout <<"------\n";
+
+			cout << "请输入验证码：";
+			cin >> out;
+			while(getchar()!='\n');
+			if(0!=strcmp(out,output))
+			{
+				cout << "验证码输入错误，请重新输入！\n";
+				while(getchar()!='\n');
+				continue;
+			}
 		}
 
 		switch (ch)
@@ -115,10 +152,11 @@ void Company::work(){
 			if (NULL != pTecMa)
 			{
 				pTecMa->work();
+				count = 0;
 			}
 			else
 			{
-				cout << "登入失败...\n";
+				cout << "密码或用户名错误，请重新输入！\n";
 			}
 			break;
 		}
@@ -131,7 +169,7 @@ void Company::work(){
 			}
 			else
 			{
-				cout << "登入失败...\n";
+				cout << "密码或用户名错误，请重新输入！\n";
 			}
 			break;
 		}
@@ -145,7 +183,7 @@ void Company::work(){
 			}
 			else
 			{
-				cout << "登入失败...\n";
+				cout << "密码或用户名错误，请重新输入！\n";
 			}
 			break;
 		}
@@ -158,7 +196,7 @@ void Company::work(){
 			}
 			else
 			{
-				cout << "登入失败...\n";
+				cout << "密码或用户名错误，请重新输入！\n";
 			}
 			break;
 		}
@@ -168,10 +206,11 @@ void Company::work(){
 			if (NULL != pBoss)
 			{
 				pBoss->work();
+				count = 0;
 			}
 			else
 			{
-				cout << "登入失败...\n";
+				cout << "密码或用户名错误，请重新输入！\n";
 			}
 			break;
 		}
@@ -185,6 +224,7 @@ void Company::work(){
 			cout << "输入有误，请重新输入" << endl;
 			break;
 		}
+		while(getchar()!='\n');
 	}
 }
 

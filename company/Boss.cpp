@@ -177,6 +177,7 @@ short Boss::BossFace(){
 	cout << "\t\t*   2、对销售经理操作      *\n";
 	cout << "\t\t*   3、对兼职技术人员操作  *\n";
 	cout << "\t\t*   4、对兼职销售人员操作  *\n";
+	cout << "\t\t*   5、显示所有员工信息    *\n";
 	cout << "\t\t*   0、返回                *\n";
 	cout << "\t\t****************************\n";
 	cout << "请输入选项:";
@@ -286,6 +287,43 @@ void Boss::operatorToSalePartTime(){
 	SaleManager::work();
 }
 
+void Boss::TotalInfo(){
+	MAP_TECMA::iterator iter1;
+		MAP_TECMA &refMap1 = DataSet::getInstance().getTecManagerMap();
+		iter1 = refMap1.begin();
+		for(;iter1 != refMap1.end();iter1++)
+		{
+			iter1->second->TecManager::info();
+		}
+		MAP_SALEMA::iterator iter2;
+		MAP_SALEMA &refMap2 = DataSet::getInstance().getSaleManagerMap();
+		iter2 = refMap2.begin();
+		for(;iter2 != refMap2.end();iter2++)
+		{
+			iter2->second->SaleManager::info();
+		}
+		MAP_TECPART::iterator iter3;
+		MAP_TECPART &refMap3 = DataSet::getInstance().getTecPartMap();
+		iter3 = refMap3.begin();
+		for(;iter3 != refMap3.end();iter3++)
+		{
+			iter3->second->TecPartTime::info();
+		}
+		MAP_SALEPART::iterator iter4;
+		MAP_SALEPART &refMap4 = DataSet::getInstance().getSalePartMap();
+		iter4 = refMap4.begin();
+		for(;iter4 != refMap4.end();iter4++)
+		{
+			iter4->second->SalePartTime::info();
+		}
+		/*MAP_BOSSMA::iterator iter5;
+		MAP_BOSSMA &refMap5 = DataSet::getInstance().getBossMap();
+		iter5 = refMap5.begin();
+		for(;iter5 != refMap5.end();iter5++)
+		{
+			iter2->second->info();
+		}*/
+}
 void Boss::work(){
 	system("clear");
 	cout << "正在为您跳转界面...\n";
@@ -309,6 +347,9 @@ void Boss::work(){
 			break;
 		case 4:
 			operatorToSalePartTime();
+			break;
+		case 5:
+			TotalInfo();
 			break;
 		case 0:
 			return;

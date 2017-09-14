@@ -24,7 +24,7 @@ SaleManager::~SaleManager() {
 void SaleManager::info(){
 	Employee::info();
 	cout << "销售额:" << m_uiSaleMoney << " 工资占比:" << m_fPerSale <<
-			" 基础工资:" << m_fSaleSalary << endl;
+			" 基础工资:" << m_fSaleSalary << ' ';
 	cout << "--工资:" << m_uiSaleMoney*m_fPerSale+m_fSaleSalary << endl;
 }
 void SaleManager::setSaleMoney(uint uiId,float saleMoney){
@@ -148,7 +148,13 @@ void SaleManager::displaySalePartTimeinfo(){
 	iter = refMap.begin();
 	for(;iter != refMap.end();iter++)
 	{
-		iter->second->info();
+		if(10000==getId())
+		{
+			iter->second->info();
+		}
+		else if(iter->second->getSaleLeader()==getId()){
+			iter->second->info();
+		}
 	}
 }
 short SaleManager::SalePartTimeFace(){

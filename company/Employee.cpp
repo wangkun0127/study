@@ -21,26 +21,26 @@ Employee::~Employee() {
 	// TODO Auto-generated destructor stub
 }
 void Employee::info(){
-	cout << "编号:" << m_uiId << " 名字:" << m_strName << endl;
+	cout << "编号:" << m_uiId << " 名字:" << m_strName << ' ';
 	switch(m_uiLevel)
 	{
 	case ENUM_EMPLOYEE_LEVEL_PARTTIME_TEC:
-		cout << "--级别:兼职技术人员" << endl;
+		cout << "--级别:兼职技术人员" << ' ';
 		break;
 	case ENUM_EMPLOYEE_LEVEL_MANAGER_TEC:
-		cout << "--级别:技术经理" << endl;
+		cout << "--级别:技术经理" << ' ';
 		break;
 	case ENUM_EMPLOYEE_LEVEL_PARTTIME_SALE:
-		cout << "--级别:兼职销售人员" << endl;
+		cout << "--级别:兼职销售人员" << ' ';
 		break;
 	case ENUM_EMPLOYEE_LEVEL_MANAGET_SALE:
-		cout << "--级别:销售经理" << endl;
+		cout << "--级别:销售经理" << ' ';
 		break;
 	case ENUM_EMPLOYEE_LEVEL_BOSS:
-		cout << "--级别:老板" << endl;
+		cout << "--级别:老板" << ' ';
 		break;
 	}
-	cout << "密码:" << m_strPwd << " 说明:" << m_strNote << endl;
+	cout << "密码:" << m_strPwd << " 说明:" << m_strNote << ' ';
 }
 
 void Employee::modifyPwd(){
